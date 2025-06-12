@@ -1,19 +1,10 @@
-
 import numpy as np
 import tensorflow as tf
-from tensorflow.keras.models import load_model #type: ignore
+
 
 import requests
 import pickle
 
-
-
-try:
-    import tensorflow as tf
-    TF_AVAILABLE = True
-except ImportError:
-    TF_AVAILABLE = False
-    st.error("TensorFlow not installed! Check requirements.txt")
 
 
 
@@ -25,8 +16,9 @@ word_index = response.json()
 # 3. Create reverse mapping (integer → word)
 reverse_word_index = {value: key for key, value in word_index.items()}
 
+
 # load the pretrain model
-model = load_model('imdb_with_simple_RNN.keras')
+model = tf.keras.models.load_model('imdb_with_simple_RNN.keras')
 model.summary()
 
 
